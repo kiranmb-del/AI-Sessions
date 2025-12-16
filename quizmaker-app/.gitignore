@@ -13,6 +13,10 @@
 /.next/
 /out/
 
+# Exclude cache specifically to prevent large files
+.next/cache/
+**/cache/**
+
 # production
 /build
 

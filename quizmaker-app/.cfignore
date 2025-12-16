@@ -1,9 +1,13 @@
 # Cloudflare Pages deployment ignore file
 # Exclude large cache files and unnecessary directories
 
-# Next.js cache and build artifacts
-.next/cache/
-.next/trace
+# Next.js cache and build artifacts (CRITICAL - prevents 25MB limit errors)
+**/.next/cache/**
+**/.next/trace
+**/cache/**
+*.cache
+
+# Dependencies
 node_modules/
 
 # Development files
@@ -15,7 +19,7 @@ node_modules/
 .git/
 .gitignore
 
-# Documentation (optional - remove if you want docs deployed)
+# Documentation
 docs/
 
 # Test files
@@ -26,12 +30,13 @@ docs/
 # Source maps (large files)
 **/*.map
 
-# TypeScript source (not needed after build)
-# Uncomment if build is complete
-# **/*.ts
-# **/*.tsx
-
 # Environment files
 .env*
 !.env.example
+
+# Build artifacts not needed for deployment
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
