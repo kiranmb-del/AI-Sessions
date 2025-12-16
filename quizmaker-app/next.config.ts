@@ -2,26 +2,12 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   /* config options here */
+  output: 'export',
+  distDir: 'out',
+  images: {
+    unoptimized: true,
+  },
   reactStrictMode: true,
-  
-  // Experimental features for Cloudflare Workers
-  experimental: {
-    serverActions: {
-      bodySizeLimit: '2mb',
-    },
-  },
-
-  // Webpack configuration for Cloudflare Workers
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      // Polyfill crypto for bcryptjs in Cloudflare Workers
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        crypto: false,
-      };
-    }
-    return config;
-  },
 
   // Headers for security
   async headers() {

@@ -1,0 +1,8 @@
+# Files to exclude from Cloudflare Pages deployment
+cache/
+.next/cache/
+**/cache/**
+*.cache
+trace
+.next/trace
+
