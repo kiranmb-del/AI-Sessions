@@ -1,0 +1,62 @@
+{
+  "name": "quizmaker-app",
+  "version": "1.0.0",
+  "description": "A comprehensive quiz management and assessment platform for educational institutions",
+  "private": true,
+  "scripts": {
+    "dev": "npm run build && wrangler pages dev .open-next/worker",
+    "dev:next": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "deploy": "npm run build && wrangler deploy",
+    "preview": "npm run build && wrangler pages dev .open-next/worker",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts",
+    "db:migrations:create": "wrangler d1 migrations create quizmaker-app-database",
+    "db:migrations:list": "wrangler d1 migrations list quizmaker-app-database --local",
+    "db:migrations:apply": "wrangler d1 migrations apply quizmaker-app-database --local",
+    "db:migrations:apply:remote": "wrangler d1 migrations apply quizmaker-app-database --remote",
+    "db:execute": "wrangler d1 execute quizmaker-app-database --local",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage"
+  },
+  "dependencies": {
+    "next": "^15.4.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "@cloudflare/workers-types": "^4.20241127.0",
+    "@opennextjs/cloudflare": "^0.3.1",
+    "bcryptjs": "^2.4.3",
+    "jose": "^5.9.6",
+    "zod": "^3.23.8",
+    "react-hook-form": "^7.53.2",
+    "@hookform/resolvers": "^3.9.1",
+    "server-only": "^0.0.1",
+    "date-fns": "^4.1.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/bcryptjs": "^2.4.6",
+    "typescript": "^5",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.6",
+    "postcss": "^8",
+    "tailwindcss": "^4.0.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/typography": "^0.5.15",
+    "wrangler": "^3.94.0",
+    "vitest": "^2.1.8",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "jsdom": "^25.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
